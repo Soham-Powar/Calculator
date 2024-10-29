@@ -16,11 +16,12 @@ body {
 	background-color: #06002E;
 	box-shadow: 15px 15px 15px black;
 	padding: 30px;
-	margin: auto;
+	margin: 50px auto;
 	border-radius: 25px;
 }
 
-.display {
+.display,
+.displayResult {
 	background-color: white;
 	height: 100px;
 	margin-bottom: 20px;
@@ -36,6 +37,8 @@ button {
 	margin: 3px;
 	font-size: larger;
 	border-radius: 15px;
+	background-color: #22252D;
+	color: white;
 }
 
 .functionButtons {
