@@ -5,7 +5,7 @@
 }
 
 body {
-	background-color: #0A004A;
+	background-color: #201315;
 }
 
 .calculator {
@@ -13,7 +13,7 @@ body {
 	flex-direction: column;
 	width: 400px;
 	height: 600px;
-	background-color: #06002E;
+	background-color: #56382D;
 	box-shadow: 15px 15px 15px black;
 	padding: 30px;
 	margin: 50px auto;
@@ -22,7 +22,8 @@ body {
 
 .display,
 .displayResult {
-	background-color: white;
+	background-color: #ffdbbb;
+	border: 1px solid #496580;
 	height: 100px;
 	margin-bottom: 20px;
 	border-radius: 15px;
@@ -37,8 +38,13 @@ button {
 	margin: 3px;
 	font-size: larger;
 	border-radius: 15px;
-	background-color: #22252D;
-	color: white;
+	background-color: #f8f3eb;
+	color: black;
+}
+
+button:hover {
+	box-shadow: 1px 1px 7px #e76d57;
+	background-color: #ffdbbb;
 }
 
 .functionButtons {
