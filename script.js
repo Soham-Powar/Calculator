@@ -3,20 +3,20 @@ let secondNumber;
 let operator;
 
 
-function add() {
-
+function add(a, b) {
+	return a + b;
 }
 
-function subtract() {
-
+function subtract(a, b) {
+	return a - b;
 }
 
-function multiply() {
-
+function multiply(a, b) {
+	return a * b;
 }
 
-function divide() {
-
+function divide(a, b) {
+	return a / b;
 }
    
 function operate (operator, num1, num2) {
@@ -36,7 +36,7 @@ function operate (operator, num1, num2) {
 		case '/':
 			divide(num1, num2);
 			break;
-			
+
 		default:
 			break;
 	}
