@@ -59,6 +59,28 @@ let continuousExp = false
 clearBtn.addEventListener('click', () => {
 	display.textContent = '';
 	displayResult.textContent = '';
+	firstNumber = '';
+	secondNumber = '';
+	operator = '';
+	gaveOperator = false;
+	secondGiven = false;
+	continuousExp = false;
+});
+
+//function for delete button
+
+deleteBtn.addEventListener('click', () => {
+	if(!gaveOperator) {
+		displayResult.textContent = displayResult.textContent.slice(0, -1);
+		display.textContent = display.textContent.slice(0, -1);
+		if(secondGiven) {
+			secondNumber = secondNumber.slice(0, -1);
+		}
+		else {
+			firstNumber = firstNumber.slice(0, -1);
+		}
+	}
+
 });
 
 //create a function that populates display on number/operation button click
@@ -66,6 +88,7 @@ clearBtn.addEventListener('click', () => {
 numberBtns.forEach(btn => {
 	btn.addEventListener('click', () => {
 		if(continuousExp) {
+			secondNumber = '';
 			displayResult.textContent = '';
 			continuousExp = false;
 		}
@@ -74,7 +97,9 @@ numberBtns.forEach(btn => {
 		if(gaveOperator || secondGiven) {
 			secondNumber += btn.textContent;
 			secondGiven = true;
-			console.log(secondNumber);
+		}
+		else {
+			firstNumber += btn.textContent;
 		}
 		gaveOperator = false;
 	})
@@ -87,35 +112,25 @@ operationBtns.forEach(btn => {
 			result = operate(operator, parseFloat(firstNumber), parseFloat(secondNumber));
 			displayResult.textContent = result;
 			firstNumber = result;
+			secondNumber = '';
 			secondGiven = false;
-			gaveOperator = false;
-			operator = btn.textContent;
-			display.textContent += btn.textContent;
-			continuousExp = true;
-			return;
 		}
 
-		if(gaveOperator) {
-			operator = btn.textContent;
-			display.textContent = display.textContent.slice(0, -1);
-			display.textContent += btn.textContent;
-			return;
-		}
-
-		
-		firstNumber = displayResult.textContent;
 		operator = btn.textContent;
 		display.textContent += btn.textContent;
 		displayResult.textContent = '';
 		gaveOperator = true;
-
-
-
+		continuousExp = true;
 	})
 });
 
 equalBtn.addEventListener('click', () => {
-	secondNumber = displayResult.textContent;
-	result = operate(operator, parseFloat(firstNumber), parseFloat(secondNumber));
-	displayResult.textContent = result;
+	if (operator && secondNumber) {
+		result = operate(operator, parseFloat(firstNumber), parseFloat(secondNumber));
+		displayResult.textContent = result;
+		firstNumber = result;
+		secondNumber = '';
+		operator = '';
+		continuousExp = true;
+	}
 });
