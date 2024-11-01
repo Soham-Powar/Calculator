@@ -17,7 +17,7 @@ function multiply(a, b) {
 }
 
 function divide(a, b) {
-	return a / b;
+	return b == 0 ? "Error! Cannot divide by zero." : a / b;
 }
    
 function operate (operator, num1, num2) {
