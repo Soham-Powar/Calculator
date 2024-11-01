@@ -1,4 +1,4 @@
-let firstNumber;
+let firstNumber = '';
 let secondNumber = '';
 let operator;
 let result;
@@ -116,9 +116,12 @@ operationBtns.forEach(btn => {
 			secondGiven = false;
 		}
 
+		if(gaveOperator) {
+			display.textContent = display.textContent.slice(0, -1);
+		}
+
 		operator = btn.textContent;
 		display.textContent += btn.textContent;
-		displayResult.textContent = '';
 		gaveOperator = true;
 		continuousExp = true;
 	})
