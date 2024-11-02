@@ -147,5 +147,7 @@ equalBtn.addEventListener('click', () => {
 		secondNumber = '';
 		operator = '';
 		continuousExp = true;
+		periodEntered = false;
+		secondGiven = false;
 	}
 });
