@@ -52,7 +52,8 @@ const deleteBtn = document.querySelector('.delete');
 
 let gaveOperator = false;
 let secondGiven = false;
-let continuousExp = false
+let continuousExp = false;
+let periodEntered = false;
 
 //function for clear button
 
@@ -65,6 +66,7 @@ clearBtn.addEventListener('click', () => {
 	gaveOperator = false;
 	secondGiven = false;
 	continuousExp = false;
+	periodEntered = false;
 });
 
 //function for delete button
@@ -87,13 +89,21 @@ deleteBtn.addEventListener('click', () => {
 
 numberBtns.forEach(btn => {
 	btn.addEventListener('click', () => {
+
+		if(btn.textContent === '.') {
+			if(periodEntered) return;
+			periodEntered = true;
+		}
+
 		if(continuousExp) {
 			secondNumber = '';
 			displayResult.textContent = '';
 			continuousExp = false;
 		}
+
 		display.textContent += btn.textContent;
 		displayResult.textContent += btn.textContent;
+
 		if(gaveOperator || secondGiven) {
 			secondNumber += btn.textContent;
 			secondGiven = true;
@@ -115,6 +125,8 @@ operationBtns.forEach(btn => {
 			secondNumber = '';
 			secondGiven = false;
 		}
+
+		periodEntered = false;
 
 		if(gaveOperator) {
 			display.textContent = display.textContent.slice(0, -1);
