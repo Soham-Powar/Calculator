@@ -1,6 +1,6 @@
 # Calculator
 
-This is a solution to the [Calculator Project](https://www.theodinproject.com/lessons/node-path-javascript-calculator) from The Odin Project's JavaScript curriculum.
+This is a solution to the [Calculator Project](https://www.theodinproject.com/lessons/foundations-calculator) from The Odin Project's JavaScript curriculum.
 
 ## Project Overview
 This project is a fully functional calculator that supports:
