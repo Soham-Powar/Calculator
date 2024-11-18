@@ -18,4 +18,4 @@ You can view the live project [here](https://soham-powar.github.io/Calculator/).
 - JavaScript (DOM Manipulation)
 
 ## Future Improvements
-- Open to sugestions.
+- Open to suggestions.
