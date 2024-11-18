@@ -55,40 +55,23 @@ let secondGiven = false;
 let continuousExp = false;
 let periodEntered = false;
 
-//function for clear button
-
-clearBtn.addEventListener('click', () => {
-	display.textContent = '';
-	displayResult.textContent = '';
-	firstNumber = '';
-	secondNumber = '';
-	operator = '';
-	gaveOperator = false;
-	secondGiven = false;
-	continuousExp = false;
-	periodEntered = false;
-});
-
-//function for delete button
-
+clearBtn.addEventListener('click', handleClear);
 deleteBtn.addEventListener('click', handleDelete);
-
-//create a function that populates display on number/operation button click
-
 numberBtns.forEach(btn => {
 	btn.addEventListener('click', () => handleNumber(btn.textContent));
 });
-
 operationBtns.forEach(btn => {
 	btn.addEventListener('click', () => handleOperator(btn.textContent)); 
 });
-
 equalBtn.addEventListener('click', handleEqual);
 
-//Keyboard support
 
+
+//Keyboard support
 window.addEventListener('keydown', keyCheck);
 
+
+//function for delete button
 function handleDelete() {
 		if(!gaveOperator) {
 		displayResult.textContent = displayResult.textContent.slice(0, -1);
@@ -102,6 +85,7 @@ function handleDelete() {
 	}
 }
 
+//create a function that populates display on number/operation button click
 function handleNumber(btnText) {
 		if(btnText === '.') {
 			if(periodEntered) return;
@@ -158,5 +142,37 @@ function handleEqual() {
 		continuousExp = true;
 		periodEntered = false;
 		secondGiven = false;
+	}
+}
+
+function handleClear() {
+	display.textContent = '';
+	displayResult.textContent = '';
+	firstNumber = '';
+	secondNumber = '';
+	operator = '';
+	gaveOperator = false;
+	secondGiven = false;
+	continuousExp = false;
+	periodEntered = false;
+}
+
+//check which key is pressed and call appropriate fns
+
+function keyCheck(e) {
+	if((e.key >= 0 && e.key <= 9) || e.key === '.') {
+		handleNumber(e.key);
+	}
+	else if(e.key === '=' || e.key === 'Enter') {
+		handleEqual();
+	}
+	else if(e.key === '+' || e.key === '-' || e.key === 'x' || e.key === '/') {
+		handleOperator(e.key);
+	}
+	else if (e.key === 'Backspace') {
+		handleDelete();
+	}
+	else if(e.key === 'Delete') {
+		handleClear();
 	}
 }
