@@ -71,8 +71,26 @@ clearBtn.addEventListener('click', () => {
 
 //function for delete button
 
-deleteBtn.addEventListener('click', () => {
-	if(!gaveOperator) {
+deleteBtn.addEventListener('click', handleDelete);
+
+//create a function that populates display on number/operation button click
+
+numberBtns.forEach(btn => {
+	btn.addEventListener('click', () => handleNumber(btn.textContent));
+});
+
+operationBtns.forEach(btn => {
+	btn.addEventListener('click', () => handleOperator(btn.textContent)); 
+});
+
+equalBtn.addEventListener('click', handleEqual);
+
+//Keyboard support
+
+window.addEventListener('keydown', keyCheck);
+
+function handleDelete() {
+		if(!gaveOperator) {
 		displayResult.textContent = displayResult.textContent.slice(0, -1);
 		display.textContent = display.textContent.slice(0, -1);
 		if(secondGiven) {
@@ -82,15 +100,10 @@ deleteBtn.addEventListener('click', () => {
 			firstNumber = firstNumber.slice(0, -1);
 		}
 	}
+}
 
-});
-
-//create a function that populates display on number/operation button click
-
-numberBtns.forEach(btn => {
-	btn.addEventListener('click', () => {
-
-		if(btn.textContent === '.') {
+function handleNumber(btnText) {
+		if(btnText === '.') {
 			if(periodEntered) return;
 			periodEntered = true;
 		}
@@ -101,23 +114,20 @@ numberBtns.forEach(btn => {
 			continuousExp = false;
 		}
 
-		display.textContent += btn.textContent;
-		displayResult.textContent += btn.textContent;
+		display.textContent += btnText;
+		displayResult.textContent += btnText;
 
 		if(gaveOperator || secondGiven) {
-			secondNumber += btn.textContent;
+			secondNumber += btnText;
 			secondGiven = true;
 		}
 		else {
-			firstNumber += btn.textContent;
+			firstNumber += btnText;
 		}
 		gaveOperator = false;
-	})
-});
+}
 
-operationBtns.forEach(btn => {
-	btn.addEventListener('click', () => {
-
+function handleOperator (btnText) {
 		if(secondGiven) {
 			result = operate(operator, parseFloat(firstNumber), parseFloat(secondNumber));
 			displayResult.textContent = result;
@@ -132,14 +142,13 @@ operationBtns.forEach(btn => {
 			display.textContent = display.textContent.slice(0, -1);
 		}
 
-		operator = btn.textContent;
-		display.textContent += btn.textContent;
+		operator = btnText;
+		display.textContent += btnText;
 		gaveOperator = true;
 		continuousExp = true;
-	})
-});
+}
 
-equalBtn.addEventListener('click', () => {
+function handleEqual() {
 	if (operator && secondNumber) {
 		result = operate(operator, parseFloat(firstNumber), parseFloat(secondNumber));
 		displayResult.textContent = result;
@@ -150,4 +159,4 @@ equalBtn.addEventListener('click', () => {
 		periodEntered = false;
 		secondGiven = false;
 	}
-});
+}
