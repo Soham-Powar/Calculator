@@ -7,6 +7,7 @@ This project is a fully functional calculator that supports:
 - Basic operations: addition, subtraction, multiplication, and division.
 - Continuous expression evaluation, allowing calculations like `5 + 3 * 2` without needing to press `=` in between.
 - Clear/reset options.
+- Keyboard functionality.
 
 ## Live Demo
 You can view the live project [here](https://soham-powar.github.io/Calculator/).
@@ -17,4 +18,4 @@ You can view the live project [here](https://soham-powar.github.io/Calculator/).
 - JavaScript (DOM Manipulation)
 
 ## Future Improvements
-- Keyboard functionality will soon be added.
+- Open to sugestions.
